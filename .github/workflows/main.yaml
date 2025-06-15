@@ -20,4 +20,3 @@ jobs:
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: surge ./ --domain briant-electiva.surge.sh --token $SURGE_TOKEN
-
