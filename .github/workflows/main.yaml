@@ -1,0 +1,23 @@
+name: Despliegue en Surge
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Instalar Surge
+        run: npm install --global surge
+
+      - name: Desplegar en Surge
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: surge ./ --domain briant-electiva.surge.sh --token $SURGE_TOKEN
+
